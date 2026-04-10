@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+        label {
+            display: block;
+            margin: 10px auto;
+        }
+        input, select {
+            margin-top: 5px;
+            padding: 6px;
+            border: 1px solid #555555;
+            border-radius: 4px;
+            background-color: #3b3b3b;
+            color: #ffffff;
+        }
+        button {
+            margin-top: 10px;
+            background-color: #4f8cff;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3a6fe0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Unit Converter</h1>
+    <label>
+        Value:<br>
+        <input id="value" type="number">
+    </label>
+    <label>
+        Convert:<br>
+        <select id="conversion">
+            <option value="km-miles">Kilometers to miles</option>
+            <option value="miles-km">Miles to kilometers</option>
+            <option value="c-f">Celsius to Fahrenheit</option>
+            <option value="f-c">Fahrenheit to Celsius</option>
+        </select>
+    </label>
+    <button onclick="convert()">Convert</button>
+    <p>Result: <span id="result"></span></p>
+    <script>
+function convert() {
+  var value = (document.getElementById('value').value);
+  var conversion = document.getElementById('conversion').value;
+  var result = 0;
+
+  if (conversion === 'km-miles') {
+    result = value * 0.621371;
+  } else if (conversion === 'miles-km') {
+    result = value / 0.621371;
+  } else if (conversion === 'c-f') {
+    result = value * 9 / 5 + 32;
+  } else if (conversion === 'f-c') {
+    result = (value - 32) * 5 / 9;
+  }
+
+  document.getElementById('result').textContent = result.toFixed(2);
+}
+</script>
+</body>
+</html>
